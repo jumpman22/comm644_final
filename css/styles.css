@@ -1,0 +1,45 @@
+body {
+  background-color: floralwhite;
+}
+
+h1 {
+  color: white;
+  font-size: 4em;
+  padding-top: 50px;
+  padding-left: 15px;
+}
+
+.text-center {
+  color: #ff0000;
+}
+.headertext {
+  color: white;
+  padding-left: 20px;
+}
+
+.bgimage {
+  width:100%;
+  height:500px;
+  background: url(../img/pizza1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+#total {
+	color: #ff0000;
+	font-size: 2.5em;
+	padding: 1em 1em;
+	border: 1px solid black;
+	background-color: grey;
+}
+
+#totalPrice {
+	color: #ff0000;
+	font-size: 1.5em;
+}
+
+#tprice {
+  font-size: 0.75em;
+}

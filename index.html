@@ -1,85 +1,354 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <title>Pizza Order App</title>
+  <meta charset="UTF-8">
+  <title>Pizza Form - Final Project</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <script src="js/script.js"></script>
+  <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Pizza Order Form</h1>
-    <div class="container">
-        <form>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last name">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-            </div>
-            <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>...</option>
-              </select>
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
-            </div>
-            <div class="form-row align-items-center">
-                <div class="col-auto my-1">
-                    <label class="mr-sm-2" for="inlineFormCustomSelect">Address Type</label>
-                    <select name="addressType" onchange='checkvalue(this.value)' class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
-                        <option value="house">House</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="business">Business</option>
-                        <option value="campus">Campus</option>
-                        <option value="hotel">Hotel</option>
-                        <option value="dorm">Dorm</option>
-                        <option value="other">Other</option>
-                    </select>
-                    <br><input type="text" name="addressType" id="addressType" style='display:none'/>
-                </div>
-            </div>
-            <br><button type="submit" class="btn btn-primary">Submit Order</button>
-        </form>
+<body class="mx-auto">
+  <section class="bgimage">
+    <h1>Pizza Napoli</h1>
+    <h2 class="headertext">Hours: 12pm-2am Daily<br>
+        p: 619-939-2201
+    </h2>
+  </section>
+  <div class="form">
+    <div class="row">
+
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--================= DELIVERY INFORMATION ==========================-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <form id="deliveryLocation">
+            <h2 class="text-center">Place Your Order for Pizaa Napoli</h2>
+            <h3 class="text-center">Enter Your Delivery Information</h3>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="ex: Sarah Lowe"><span id="nameerror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="addressType">Address Type </label>
+              <select class="form-control" name="address" id="addressType" onchange="checkOptions(this.value);">
+      			  <option>Select Address Type</option>
+      			  <option>House</option>
+      			  <option>Apartment</option>
+      			  <option>Business</option>
+      			  <option>Campus</option>
+      			  <option>Hotel</option>
+      			  <option>Dorm</option>
+      			  <option>Other</option>
+    			  </select>
+              <input type="text" class="form-control" id="address" name="address" style="display:none;" /><span id="addresserror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="streetAddress">Street Address:</label>
+              <input type="text" class="form-control" id="streetAddress" placeholder="ex: 123 Main St."><span id="streeterror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="apartmentNumber">Apartment #:</label>
+              <input type="text" class="form-control" id="apartmentNumber" placeholder="ex: #974"><span id="apartmenterror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="city">City:</label>
+              <input type="text" class="form-control" id="city" placeholder="ex: Chicago"><span id="cityerror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="state">State:</label>
+              <input type="text" class="form-control" id="state" placeholder="ex: NY"><span id="stateerror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="zipCode">Zip Code:</label>
+              <input type="text" class="form-control" id="zipCode" placeholder="ex: 58647"><span id="ziperror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="phoneNumber">Phone:</label>
+              <input type="text" class="form-control" id="phoneNumber" placeholder="ex: 213-8524-9671"><span id="phonenumbererror"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="ex: lucy@aol.com"><span id="emailerror"></span>
+
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
+<!---===============    DISPLAY PIZZA PRICE   =====================-->
+          <div id="total">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+              <div class="input-group-addon" id="tprice">Total: $</div>
+              <input type="text" class="form-control" id="totalPrice" placeholder="Total Price" value="0.000" readonly>
+            </div>
+          </div>
+
+        </div>
+        <form id="bulidingPizza">
+
+<!--==================== PIZZA BUILDING ================================-->
+          <h2 class="text-center">Bulid Your Pizza</h2>
+          <div id="bulidPizza">
+            <fieldset>
+              <legend>
+                <bold>Please Select Crust to Begin Your Order:</bold>
+              </legend>
+
+              <div class="form-check">
+                <label class="form-check-label" for="handTossed">
+ 	  <input class="form-check-input" type="radio" name="optdough" id="handTossed" value="HandTossed">
+ 		Hand Tossed
+ 	  </label>
+              </div>
+
+              <div class="form-check">
+                <label class="form-check-label" for="thinCrust">
+ 	  <input class="form-check-input" type="radio" name="optdough" id="thinCrust" value="Thin Crust Pizza">
+ 		Thin Crust
+ 	  </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label" for="newYorkStyle">
+ 	  <input class="form-check-input" type="radio" name="optdough" id="newYorkStyle" value="NewYork Style Pizza">
+ 		New York Style
+ 	  </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label" for="glutenFree">
+ 	  <input class="form-check-input" type="radio" name="optdough" id="glutenFree" value="Gluten Free pizza">
+ 		Gluten Free
+ 	  </label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="sizeCost"><strong>Size and Cost</strong></label>
+              <select class="form-control" id="sizeCost">
+ 	  <option value="0">Select your size of pizza after selecting crust</option>
+ 	</select>
+            </div>
+
+            <div class="form-group">
+              <label for="cheeseOptions"><strong>Choose Your Cheese:</strong></label>
+              <select class="form-control" id="cheeseOptions">
+ 		  <option value="0">Light: $0.00</option>
+ 		  <option value="0">Normal: $0.00</option>
+ 		  <option value="2.99">Extra: +$2.99</option>
+ 		  <option value="3.99">Double: +$3.99</option>
+ 		</select>
+            </div>
+
+            <div class="form-group">
+              <label for="sauceOptions"><strong>Choose Your Sauce:</strong></label>
+              <select class="form-control" id="sauceOptions">
+ 		  <option value="0">Regular Tomato: $0.00</option>
+ 		  <option value="0.99">Hearty Tomato: +$.99</option>
+ 		  <option value="1.99">BBQ Sauce: +$1.99</option>
+ 		</select>
+            </div>
+          </div>
+          <div id="toppings">
+            <fieldset>
+              <legend>Select additional toppings ($.99 each):</legend>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="peppers" value="peppers">Peppers
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="olives" value="olives">Olives
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="jalapenos" value="jalapenos">Jalapenos
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="mushrooms" value="mushrooms">Mushrooms
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="pineapple" value="pineapple">Pineapple
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="onion" value="onion">Onion
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="pepperoni" value="pepperoni">Pepperoni
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="sausage" value="sausage">Sausage
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="ham" value="ham">Ham
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="bacon" value="bacon">Bacon
+ 	   </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+ 		<input type="checkbox" class="form-check-input" id="salami" value="salami">Salami
+ 	   </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="text-center"><br>
+            <a id="confirmation"><button type="submit" class="btn btn-lg btn-danger">Finish Building Pizza</button></a><br>
+          </div>
+        </form>
+      </div>
+    </div>
+
+<!--==================== BILLING INFORMATION ================================-->
+    <div id="billing" style="display: none;">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <form id="billingInfo">
+              <h2 class="text-center"><br>Billing Information</h2>
+              <div class="form-group has-success">
+                <label class="custom-control custom-checkbox" id="checkbox1">
+			<input type="checkbox" class="custom-control-input" id="bcheckBox">
+			<span class="custom-control-indicator"></span>
+			<span class="custom-control-description">Same as a delivery location</span>
+		  </label>
+              </div>
+
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name1" placeholder="Name"><span id="name1error"></span>
+              </div>
+
+
+              <div class="form-group">
+                <label for="streetAddress">Street Address:</label>
+                <input type="text" class="form-control" id="streetAddress1" placeholder="Street Address"><span id="street1error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="apartmentNumber">Apartment #:</label>
+                <input type="text" class="form-control" id="apartmentNumber1" placeholder="Apartment Number"><span id="apartment1error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" class="form-control" id="city1" placeholder="City"><span id="city1error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" class="form-control" id="state1" placeholder="State"><span id="state1error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="zipCode">Zip Code:</label>
+                <input type="text" class="form-control" id="zipCode1" placeholder="Zip Code"><span id="zip1error"></span>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+          <form id="payment">
+            <fieldset>
+
+              <h2 class="text-center">Payment</h2>
+              <div class="creditCardForm">
+                <div class="payment">
+                  <div class="form-group owner">
+                    <label for="owner">Card Holder Name</label>
+                    <input type="text" class="form-control" id="cardHolderName" placeholder="Name on credit card"><span id="cardHolderNameError"></span>
+                  </div>
+
+                  <div class="form-group" id="card-Number">
+                    <label for="cardNumber">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Card number"><span id="cardNumberError"></span>
+                  </div>
+                  <div class="form-group CVV">
+                    <label for="cvv">CVC Code</label>
+                    <input type="password" class="form-control" id="cvcCode" placeholder="CVC Security code"><span id="cvcCodeError"></span>
+                  </div>
+                  <div class="form-group" id="expirationDate">
+                    <label>Expiration Date</label>
+                    <select id="month">
+                   <option value="0">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                    <select id="year">
+                   <option value="0"> YEAR</option>
+                   <option value="2017"> 2017</option>
+                    <option value="2018"> 2018</option>
+                    <option value="2019"> 2019</option>
+                    <option value="2020"> 2020</option>
+                    <option value="2021"> 2021</option>
+                    <option value="2022"> 2022</option>
+                    <option value="2023"> 2023</option>
+                    <option value="2024"> 2024</option>
+                    <option value="2025"> 2025</option>
+                    <option value="2026"> 2026</option>
+                    <option value="2027"> 2027</option>
+                    <option value="2028"> 2028</option>
+                </select>
+                  </div>
+                  <div class="form-group" id="payNow">
+                    <button type="submit" class="btn btn-lg btn-danger" id="confirmPurchase">Place Order</button>
+                  </div>
+
+                </div>
+              </div>
+            </fieldset>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
 </body>
 
 </html>
